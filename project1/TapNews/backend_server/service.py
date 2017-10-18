@@ -4,6 +4,8 @@ SERVER_HOST = 'localhost'
 SERVER_PORT = 4040
 
 class RequestHandler(pyjsonrpc.HttpRequestHandler):
+
+    
     @pyjsonrpc.rpcmethod
     def add(self, a, b):
         """ Test method """
