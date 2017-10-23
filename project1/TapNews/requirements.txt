@@ -1,0 +1,5 @@
+pika
+pymongo
+python-jsonrpc
+redis
+requests
