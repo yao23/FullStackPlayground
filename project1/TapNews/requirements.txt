@@ -1,3 +1,4 @@
+newspaper
 pika
 pymongo
 python-jsonrpc
