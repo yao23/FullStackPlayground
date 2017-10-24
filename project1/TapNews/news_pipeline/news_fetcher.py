@@ -22,7 +22,7 @@ scrape_news_queue_client = CloudAMQPClient(SCRAPE_NEWS_TASK_QUEUE_URL, SCRAPE_NE
 
 
 def handle_message(msg):
-    if msg is not None or not isinstance(msg, dict):
+    if msg is None or not isinstance(msg, dict):
         print "message is broken"
         return
 
