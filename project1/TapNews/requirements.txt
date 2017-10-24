@@ -1,6 +1,8 @@
-newspaper
+
 pika
 pymongo
+python-dateutil
 python-jsonrpc
 redis
 requests
+sklearn
