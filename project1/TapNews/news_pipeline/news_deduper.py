@@ -11,7 +11,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 import mongodb_client
 from cloudAMQP_client import CloudAMQPClient
 
-DEDUPE_NEWS_TASK_QUEUE_URL = ""
+DEDUPE_NEWS_TASK_QUEUE_URL = "amqp://exupfugx:wmGJWmV-5Y0LpIT_mj51uzpFiqHNX_1w@donkey.rmq.cloudamqp.com/exupfugx"
 DEDUPE_NEWS_TASK_QUEUE_NAME = "tap-news-dedupe-news-task-queue"
 
 SLEEP_TIME_IN_SECONDS = 1
