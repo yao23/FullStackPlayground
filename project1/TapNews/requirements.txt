@@ -1,4 +1,4 @@
-
+newspaper
 pika
 pymongo
 python-dateutil
