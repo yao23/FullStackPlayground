@@ -85,7 +85,17 @@ $ sudo apt-get install libxml2-dev libxslt-dev
 $ sudo apt-get install libjpeg-dev zlib1g-dev libpng12-devpip
 
 $ sudo install —upgrade setuptools
-
+<br />
+Ubuntu 14:
+<br />
+pip uninstall setuptools
+<br />
+pip install setuptools
+<br />
+or try:
+<br />
+pip install --upgrade setuptools --user python
+<br />
 $ sudo pip install newspaper
 
 
