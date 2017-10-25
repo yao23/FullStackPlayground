@@ -51,7 +51,7 @@ class LoginPage extends React.Component {
                 response.json().then(json => {
                     console.log(json);
                     Auth.authenticateUser(json.token, email);
-                    // go to news page after authenticate
+                    // go to news page after authenticate (context passed in constructor)
                     this.context.router.replace('/');
                 });
             } else {
