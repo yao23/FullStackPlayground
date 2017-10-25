@@ -9,9 +9,9 @@ class LoginPage extends React.Component {
 
         this.state = {
             errors: {
-                summary: 'summary error',
-                email: 'email error',
-                password: 'password error'
+                summary: '',
+                email: '',
+                password: ''
             },
             user: {
                 email: '',
@@ -45,7 +45,7 @@ class LoginPage extends React.Component {
                 password: this.state.user.password
             })
         }).then(response => {
-            if (response.status == 200) {
+            if (response.status === 200) {
                 this.setState({errors: {}});
 
                 response.json().then(json => {
