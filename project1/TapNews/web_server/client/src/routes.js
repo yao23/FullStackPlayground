@@ -10,7 +10,7 @@ const routes = {
         {
             path: '/',
             getComponent: (location, callback) => {
-                if (Auth.isUserAuthenticated) {
+                if (Auth.isUserAuthenticated()) {
                     callback(null, App);
                 } else {
                     callback(null, LoginPage);
