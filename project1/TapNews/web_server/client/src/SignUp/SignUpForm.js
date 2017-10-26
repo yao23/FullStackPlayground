@@ -36,7 +36,7 @@ const SignUpForm = ({
         </div>
         <div className='row'>
           <div className='input-field col s12'>
-            <input className='validate' id='passwordConfirm' type="password" name='passwordConfirm' onChange={onChange} />
+            <input className='validate' id='confirm_password' type="password" name='confirm_password' onChange={onChange} />
             <label htmlFor="password">Confirm Password</label>
           </div>
         </div>

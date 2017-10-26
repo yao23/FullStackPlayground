@@ -1,14 +1,18 @@
 var express = require('express');
 var path = require('path');
+var bodyParser = require('body-parser');
 var cors = require('cors');
 
+var auth = require('./routes/auth');
 var index = require('./routes/index');
 var news = require('./routes/news');
 var config = require('./config/config.json');
 var _ = require('./models/main.js').connect(config.mongoDbUri); // _ for meaningless variable, no later usage, just for require
 var authCheckMiddleware = require('./middleware/auth_checker');
 var passport = require('passport');
+
 var app = express();
+app.use(bodyParser.json());
 
 // Load passport strategies
 app.use(passport.initialize());
@@ -27,6 +31,7 @@ app.use('/static', express.static(path.join(__dirname, '../client/build/static/'
 app.use(cors());
 
 app.use('/', index);
+app.use('/auth', auth);
 app.use('/news', authCheckMiddleware);
 app.use('/news', news);
 

@@ -75,7 +75,7 @@ class SignUpPage extends React.Component {
         this.setState({user});
 
         const errors = this.state.errors;        
-        if (this.state.user.password !== this.state.user.passwordConfirm) {
+        if (this.state.user.password !== this.state.user.confirm_password) {
             errors.password = "Password and Confrim Password don't match";
         } else { // clear previous error message
             errors.password = '';

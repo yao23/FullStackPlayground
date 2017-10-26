@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema({
     password: String
 });
 
-UserSchema.method.comparePassword = function comparePassword(
+UserSchema.methods.comparePassword = function comparePassword(
     password, callback) {
         bcrypt.compare(password, this.password, callback);
 };

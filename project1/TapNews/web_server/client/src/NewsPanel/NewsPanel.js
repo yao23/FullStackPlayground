@@ -1,4 +1,5 @@
 import './NewsPanel.css';
+import Auth from '../Auth/Auth';
 import React from 'react';
 import NewsCard from '../NewsCard/NewsCard';
 import _ from 'lodash';
@@ -28,7 +29,12 @@ class NewsPanel extends React.Component {
         // const news_url = 'http://' + window.location.host + '/news';
         // const news_url = 'http://' + window.location.hostname + ':3000' + '/news';
         const news_url = 'http://localhost:3000/news';
-        const request = new Request(news_url, { method:'GET', cache:false });
+        const request = new Request(news_url, { 
+            method:'GET',
+            headers: {
+                'Authorization': Auth.getToken()
+            },
+            cache:false });
         
         fetch(request)
             .then((res) => res.json())
