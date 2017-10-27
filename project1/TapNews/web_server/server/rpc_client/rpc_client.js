@@ -27,7 +27,16 @@ function getNewsSummariesForUser(userId, pageNum, callback) {
     });
 }
 
+// Log a news click event for a user
+function logNewsClickForUser(user_id, news_id) {
+    client.request('logNewsClickForUser', [user_id, news_id], function(err, error, response) {
+        if (err) throw err;
+        console.log(response);
+    });
+}
+  
 module.exports = {
     add: add,
-    getNewsSummariesForUser: getNewsSummariesForUser
+    getNewsSummariesForUser: getNewsSummariesForUser,
+    logNewsClickForUser: logNewsClickForUser
 };

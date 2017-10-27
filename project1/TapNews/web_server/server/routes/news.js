@@ -12,5 +12,13 @@ router.get('/userId/:userId/pageNum/:pageNum', function(req, res, next) {
     });
   });
   
+/* Log news click */
+router.get('/userId/:userId/newsId/:newsId', function(req, res, next) {
+  userId = req.params['userId'];
+  newsId = req.params['newsId'];
+  
+  rpc_client.logNewsClickForUser(userId, newsId);
+  res.status(200);
+});
 module.exports = router;
   
