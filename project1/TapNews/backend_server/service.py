@@ -1,5 +1,5 @@
 """ Backend service """
-
+import operations
 import pyjsonrpc
 
 SERVER_HOST = 'localhost'
@@ -21,6 +21,11 @@ class RequestHandler(pyjsonrpc.HttpRequestHandler):
         print "getOneNews is called"
         return operations.getOneNews()
 
+    @pyjsonrpc.rpcmethod
+    def getNewsSummariesForUser(self, user_id, page_num): # pylint: disable=no-self-use
+        """ Get news summaries for a user """
+        print "getNewsSummariesForUser is called with %s and %s" % (user_id, page_num)
+        return operations.getNewsSummariesForUser(user_id, page_num)
 
 # Threading HTTP-Server
 HTTP_SERVER = pyjsonrpc.ThreadingHttpServer(
