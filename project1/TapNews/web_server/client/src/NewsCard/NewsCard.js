@@ -9,10 +9,10 @@ class NewsCard extends React.Component {
         this.redirectToUrl = this.redirectToUrl.bind(this); 
     }
 
-    redirectToUrl(url) {
+    redirectToUrl(event) {
         event.preventDefault();
-        this.sedn
-        window.open(url, '_blank');
+        this.sendClickLog();
+        window.open(this.props.news.url, '_blank');
     }
 
     sendClickLog() {

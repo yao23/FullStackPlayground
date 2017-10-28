@@ -12,6 +12,7 @@ from datetime import datetime
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 
 import mongodb_client
+import news_recommendation_service_client
 
 from cloudAMQP_client import CloudAMQPClient
 
@@ -60,11 +61,20 @@ def getNewsSummariesForUser(user_id, page_num):
  
         sliced_news = total_news[begin_index:end_index]
 
+    # Get preference for the user
+    preference = news_recommendation_service_client.getPreferenceForUser(user_id)
+    topPreference = None
+
+    if preference is not None and len(preference) > 0:
+        topPreference = preference[0]
+    
     for news in sliced_news:
         # Remove text field to save bandwidth
         del news['text']
+        if news['class'] == topPreference:
+            news['reason'] = 'Recommend'
         if news['publishedAt'].date() == datetime.today().date():
-            news['time'] = 'today'
+            news['time'] = 'Today'
 
     return json.loads(dumps(sliced_news))
 
