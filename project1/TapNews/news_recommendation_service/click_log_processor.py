@@ -24,7 +24,7 @@ import mongodb_client
 from cloudAMQP_client import CloudAMQPClient
 
 # Don't modify this value unless you know what you are doing.
-NUM_OF_CLASSES = 17
+NUM_OF_CLASSES = 8
 INITIAL_P = 1.0 / NUM_OF_CLASSES
 ALPHA = 0.1
 
