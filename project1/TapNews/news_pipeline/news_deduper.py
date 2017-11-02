@@ -9,6 +9,8 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'common'))
 
 import mongodb_client
+import news_topic_modeling_service_client
+
 from cloudAMQP_client import CloudAMQPClient
 
 DEDUPE_NEWS_TASK_QUEUE_URL = "amqp://exupfugx:wmGJWmV-5Y0LpIT_mj51uzpFiqHNX_1w@donkey.rmq.cloudamqp.com/exupfugx"
@@ -57,6 +59,13 @@ def handle_message(msg):
                 return
     # Use dateutil to transfer to MongoDB time format
     task['publishedAt'] = parser.parse(task['publishedAt'])
+
+    # Classify news
+    title = task['title']
+    if title is None:
+        title = task['description']
+    topic = news_topic_modeling_service_client.classify(title)
+    task['class'] = topic
 
     db[NEWS_TABLE_NAME].replace_one({'digest': task['digest']}, task, upsert=True)
 
